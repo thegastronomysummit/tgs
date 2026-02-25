@@ -5,13 +5,11 @@ import { SessionProvider, useSession } from "@/lib/authMock";
 
 interface SessionProviderCompProps {
   children: ReactNode;
-  session?: any;
 }
 
-export default function SessionProviderComp({
-  children,
-  session,
-}: SessionProviderCompProps) {
-  const clientSession = useSession?.()?.session || session;
-  return <SessionProvider session={clientSession}>{children}</SessionProvider>;
+export default function SessionProviderComp({ children }: SessionProviderCompProps) {
+  // fetch session inside here (mock or real)
+  const { session } = useSession?.() || {};
+
+  return <SessionProvider session={session}>{children}</SessionProvider>;
 }

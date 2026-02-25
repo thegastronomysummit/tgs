@@ -12,17 +12,12 @@ import NextTopLoader from "nextjs-toploader";
 
 const dmsans = DM_Sans({ subsets: ["latin"] });
 
-interface RootLayoutProps {
-  children: React.ReactNode;
-  session?: any; // optional session prop
-}
-
-export default function RootLayout({ children, session }: RootLayoutProps) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={dmsans.className}>
         <AuthDialogProvider>
-          <SessionProviderComp session={session}>
+          <SessionProviderComp>
             <ThemeProvider attribute="class" enableSystem defaultTheme="system">
               <Aoscompo>
                 <Header />
