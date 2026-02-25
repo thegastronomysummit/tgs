@@ -1,26 +1,28 @@
+// src/app/layout.tsx
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Layout/Header";
 import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "next-themes";
-import ScrollToTop from '@/components/ScrollToTop';
+import ScrollToTop from "@/components/ScrollToTop";
 import Aoscompo from "@/utils/aos";
 import SessionProviderComp from "@/components/nextauth/SessionProvider";
 import { AuthDialogProvider } from "./context/AuthDialogContext";
-import NextTopLoader from 'nextjs-toploader';
+import NextTopLoader from "nextjs-toploader";
 
 const dmsans = DM_Sans({ subsets: ["latin"] });
 
-export default function RootLayout({
-  children,
-}: {
+interface RootLayoutProps {
   children: React.ReactNode;
-}) {
+  session?: any; // optional session prop
+}
+
+export default function RootLayout({ children, session }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={dmsans.className}>
         <AuthDialogProvider>
-          <SessionProviderComp>
+          <SessionProviderComp session={session}>
             <ThemeProvider attribute="class" enableSystem defaultTheme="system">
               <Aoscompo>
                 <Header />
