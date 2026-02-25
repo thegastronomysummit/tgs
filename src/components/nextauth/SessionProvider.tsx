@@ -1,13 +1,12 @@
 "use client";
+
 import React from "react";
 import { SessionProvider } from "@/lib/authMock";
 
 export default function SessionProviderComp({
-    children,
-    session,
+  children,
 }: {
-    children: React.ReactNode;
-    session: any;
+  children: React.ReactNode;
 }) {
-    return <SessionProvider session={session}>{children}</SessionProvider>;
+  return <SessionProvider>{children}</SessionProvider>;
 }
